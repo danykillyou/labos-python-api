@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    build: ./web
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - web
+
+networks:
+  mynetwork:
+
